@@ -37,7 +37,7 @@ You use it like a Trac Macro, like so:
 When saving your trac page, it gets transformed into the following:
 
 ```
-[[CryptedData(password,A9AREZlKT01kwN4DaDlCrJQdshhzeXG5eGbP7K...)]]
+[[CryptData(password,A9AREZlKT01kwN4DaDlCrJQdshhzeXG5eGbP7K...)]]
 ```
 
 This macro gets expanded at runtime into some javascript magic that
