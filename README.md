@@ -1,6 +1,6 @@
 ##CryptData##
 
-*CryptData is a Trac plugin that allows you to store data in your Trac wiki in a safe way, by using **RSA public/private encryption**.*
+*CryptData is a Trac plugin that allows you to store data in your Trac wiki in a safe way, by using RSA public/private encryption.*
 
 *At the moment, it only supports one-line pieces of text (passwords), but
 this might change in the future. Everything has been "namespaced" in
@@ -37,7 +37,7 @@ You use it like a Trac Macro, like so:
 When saving your trac page, it gets transformed into the following:
 
 ```
-[[CryptedData(password,A9AREZlKT01kwN4DaDlCrJQdshhzeXG5eGbP7K...)]]
+[[CryptData(password,A9AREZlKT01kwN4DaDlCrJQdshhzeXG5eGbP7K...)]]
 ```
 
 This macro gets expanded at runtime into some javascript magic that
