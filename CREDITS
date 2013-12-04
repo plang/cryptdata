@@ -1,0 +1,12 @@
+* Thanks to my employer Oliver Hitz from Net Track [www.net-track.ch], 
+  for the idea and core concept of this library, and his idea of 
+  namespacing, enabling further additions.
+
+* Thanks to Versaneo GmbH for their great crypto javascript library "pidCrypt",
+  and to all the projects it is dependent upon. [www.pidder.de/pidcrypt]
+  
+* Thanks to HubSpot for their great dialog javascript library "Vex".
+  [github.hubspot.com/vex/docs/welcome]
+
+* Thanks to the Trac team, who did an incredible API for extending Trac.
+  [trac.edgewall.org]

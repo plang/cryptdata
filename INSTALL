@@ -1,0 +1,22 @@
+1. Generate an RSA keypair (with passphrase) with openssl:
+
+openssl genrsa -aes256 -out private.key 1024
+openssl rsa -in private.key -pubout > public.key
+
+Don't forget to choose a passphrase when generating the private key.
+This is the string you'll use for decoding your data.
+
+2. Install the plugin:
+
+python setup.py bdist_egg
+... then copy dist/*.egg file into your plugin folder.
+
+3. Configure your RSA keypair in your trac.ini:
+
+[cryptdata]
+private_key_path = /the/path/of/your/private.key
+public_key_path = /the/path/of/your/public.key
+
+4. Enjoy!
+
+Type in any wiki page [[CPassword(my secret data)]], and save it.

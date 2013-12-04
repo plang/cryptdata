@@ -1,0 +1,5 @@
+* Other encryption types, like "text", "images"...
+
+* Implement tests
+
+* Add support for passphrases containing accents
