@@ -6,6 +6,17 @@ openssl rsa -in private.key -pubout > public.key
 Don't forget to choose a passphrase when generating the private key.
 This is the string you'll use for decoding your data.
 
+Just like with any keypair, make sure it is secured correctly. For
+example, set the owner to "root", and the group to the user your
+web server is running under, most likely "www-data". 
+Give "root" read-write access, "www-data" read-only access, and most 
+important: not single right for "world".
+
+Should look like this:
+
+-rw-r-----  1 root     www-data  966 Dec  2 13:57 private.key
+-rw-r-----  1 root     www-data  272 Dec  2 13:58 public.key
+
 2. Install the plugin:
 
 python setup.py bdist_egg
@@ -17,6 +28,6 @@ python setup.py bdist_egg
 private_key_path = /the/path/of/your/private.key
 public_key_path = /the/path/of/your/public.key
 
-4. Enjoy!
+4. Reload your web server, and enjoy!
 
 Type in any wiki page [[CPassword(my secret data)]], and save it.
