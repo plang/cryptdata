@@ -31,10 +31,10 @@ class CryptDataMacro(WikiMacroBase):
 
         if encrypted_data_type == "password":
             t = """
-                <div class="cryptdata-password">
+                <span class="cryptdata-password">
                     <a href="javascript:void(0)">Show encrypted password</a>
-                    <div class="hide encrypted_password">%s</div>
-	          </div>
+                    <span class="hide encrypted_password">%s</span>
+                </span>
             """ % (encrypted_data)
 
         return t

@@ -12,7 +12,7 @@ $(function() {
     vex.defaultOptions.className = 'vex-theme-default';
 
     // Show dialog on click
-    $("div.cryptdata-password > a").click(function() {
+    $(".cryptdata-password > a").click(function() {
 
         // Saving the link the user has clicked onto
         $link = $(this);
