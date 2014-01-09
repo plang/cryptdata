@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name = 'CryptData',
-	version = '0.9.2',
+	version = '0.9.3',
 	maintainer = 'Philippe Lang',
 	maintainer_email = 'philippe.lang@cromagnon.ch',
 	description = 'Encrypts / Decrypts data with an RSA keypair',

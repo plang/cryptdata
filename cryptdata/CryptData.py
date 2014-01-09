@@ -7,7 +7,7 @@
 # Author: Philippe Lang <philippe.lang@cromagnon.ch>
 
 import re
-import os
+from subprocess import Popen, PIPE
 
 from trac.core import *
 
@@ -54,9 +54,10 @@ class CryptDataValidator(Component):
         for (password) in re.findall(password_pattern, page.text):
             # Getting password, and encrypting it
             string_unencoded = re.sub( r'\[\[[cC][pP]assword\((.*)\)\]\]', r'\1', password)
-            cmd = "echo '%s' | openssl rsautl -encrypt -pubin -inkey %s | base64 -w 0" % (string_unencoded, self.public_key_path)
-            f = os.popen(cmd)
-            string_encoded = f.read().rstrip()
+            p1 = Popen(["echo", string_unencoded], stdout=PIPE)
+            p2 = Popen(["openssl", "rsautl", "-encrypt", "-pubin", "-inkey", self.public_key_path], stdin=p1.stdout, stdout=PIPE)
+            p3 = Popen(["base64", "-w", "0"], stdin=p2.stdout, stdout=PIPE)
+            string_encoded = p3.communicate()[0]
             # Doing the replacement
             replacement_pattern = re.compile(r'\[\[[cC][pP]assword\(%s\)\]\]' % string_unencoded)
             page.text = re.sub(replacement_pattern, "[[CryptData(password," + string_encoded + ")]]", page.text)
@@ -102,9 +103,8 @@ class CryptDataHeaderScript(Component):
         add_script(req, "hw/js/cryptdata-password.js", "text/javascript")
 
         # Private key
-        cmd = "more %s" % self.private_key_path
-        f = os.popen(cmd)
-        key = f.read().rstrip()
+        p = Popen(["more", self.private_key_path], stdout=PIPE)
+        key = p.communicate()[0]
         add_meta(req, key, None, "private_key_encoded")
 	
         return (template, data, content_type)
